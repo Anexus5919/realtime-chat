@@ -1,4 +1,6 @@
 import { treaty } from '@elysiajs/eden'
-import { App } from '../app/api/[[...slugs]]/route'
+import type { App } from '../app/api/[[...slugs]]/route'
 
-export const client = treaty<App>('localhost:3000').api
+const domain = typeof window !== 'undefined' ? window.location.host : 'localhost:3000'
+
+export const client = treaty<App>(domain).api
